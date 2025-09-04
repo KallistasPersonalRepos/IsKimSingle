@@ -1,61 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Is Kim Single?</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f9fafc;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-        .container {
-            background: #fff;
-            padding: 2rem 3rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-            text-align: center;
-        }
-        h1 {
-            color: #4e5d6c;
-            margin-bottom: 0.5em;
-        }
-        .answer {
-            font-size: 2rem;
-            color: #e74c3c;
-            margin: 1em 0;
-        }
-        .footer {
-            margin-top: 2em;
-            color: #888;
-            font-size: 0.9em;
-        }
-        @media (max-width: 600px) {
-            .container {
-                padding: 1rem 1.2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is Kim Single? 🤔💖</title>
+  <style>
+    /* Reset & base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+      background: linear-gradient(135deg, #facc15, #f472b6);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+    .card {
+      background: #ffffff20;
+      padding: 2rem;
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+    .card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .card p {
+      margin-bottom: 1.5rem;
+      opacity: 0.95;
+      font-size: 1.1rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    input[type="email"] {
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: #10b981;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #059669;
+    }
+    #message {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    footer {
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Is Kim single?</h1>
-        <div class="answer" id="kim-status">🤔 Loading...</div>
-        <div class="footer">
-            <span>Made with ❤️ by me</span>
-        </div>
+  <header>
+    <h1>💌 Kim’s love life update!</h1>
+    <p>Wondering if Kim is single? Stay updated 😎💖</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Sign up for updates!</h2>
+      <p>Enter your email to get notified whether Kim is single or not 🤫💌</p>
+      <form id="waitlist-form">
+        <input type="email" name="email" placeholder="Your email here" required>
+        <button type="submit">Keep Me Updated!</button>
+      </form>
+      <p id="message"></p>
     </div>
-    <script>
-        // Example: Simulate status fetch (replace with real API if available)
-        setTimeout(() => {
-            document.getElementById('kim-status').textContent = "Fuck yes! 🎉";
-        }, 900);
-    </script>
+  </main>
+
+  <footer>
+    &copy; 2025 Kallista<3. All rights reserved.
+  </footer>
+
+  <script>
+    // Placeholder submit handler – update backend URL later
+    document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = e.target.email.value;
+
+      try {
+        const res = await fetch("https://your-backend.onrender.com/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+        const msg = await res.text();
+        document.getElementById("message").innerText = msg;
+      } catch (err) {
+        document.getElementById("message").innerText = "Oops! Something went wrong 😅";
+      }
+    });
+  </script>
 </body>
 </html>
