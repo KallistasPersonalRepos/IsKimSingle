@@ -1,30 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Waitlist</title>
+    <meta charset="UTF-8">
+    <title>Is Kim Single?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f9fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            text-align: center;
+        }
+        h1 {
+            color: #4e5d6c;
+            margin-bottom: 0.5em;
+        }
+        .answer {
+            font-size: 2rem;
+            color: #e74c3c;
+            margin: 1em 0;
+        }
+        .footer {
+            margin-top: 2em;
+            color: #888;
+            font-size: 0.9em;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Join the waitlist</h1>
-  <form id="waitlist-form">
-    <input type="email" name="email" placeholder="Enter your email" required>
-    <button type="submit">Sign up</button>
-  </form>
-  <p id="message"></p>
-
-  <script>
-    document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = e.target.email.value;
-      const res = await fetch("https://your-backend.onrender.com/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      const msg = await res.text();
-      document.getElementById("message").innerText = msg;
-    });
-  </script>
+    <div class="container">
+        <h1>Is Kim Single?</h1>
+        <div class="answer" id="kim-status">🤔 Loading...</div>
+        <div class="footer">
+            <span>Made with ❤️ by the IsKimSingle team</span>
+        </div>
+    </div>
+    <script>
+        // Example: Simulate status fetch (replace with real API if available)
+        setTimeout(() => {
+            document.getElementById('kim-status').textContent = "Yes! 🎉";
+        }, 900);
+    </script>
 </body>
 </html>
